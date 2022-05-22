@@ -14,6 +14,8 @@ public class MagicNumbers : MonoBehaviour
     [SerializeField] private Button RightButton;
 
     private int _guess;
+    
+    private int _stepValue = 0;
 
     private void Start()
     {
@@ -51,16 +53,21 @@ public class MagicNumbers : MonoBehaviour
         SetInfoText("число больше");
         _min = _guess;
         CalculateGuess();
+        _stepValue++;
     }
     private void RightBottonClicked ()
     {
-        SetInfoText($"ПОБЕДА !!!! твоё число {_guess}"); 
+        SetInfoText($"ПОБЕДА !!!! твоё число {_guess}. количество шагов {_stepValue}");
+        _min = 0;
+        _max = 0;
+        _guess = 0; 
     }
     private void SmallerBottonClicked ()
     {
         SetInfoText("число меньше");
         _max = _guess;
         CalculateGuess();
+        _stepValue++;
     }
     
 }
