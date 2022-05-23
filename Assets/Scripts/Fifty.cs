@@ -1,6 +1,4 @@
-using System.Net;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -49,6 +47,7 @@ public class Fifty : MonoBehaviour
         _stepValue = 0;
         ResultLabelText(" ");
         StepValueLableText(" ");
+        SetInfoText(" ");
     }
 
     void Update()
@@ -79,11 +78,7 @@ public class Fifty : MonoBehaviour
         _summ += 9;
         _stepValue++;
         ResultLabelText($"{_summ}");
-        if (_summ >= 50)
-        {
-            SetInfoText("конец игры");
-            StepValueLableText($"количество шагов - {_stepValue}");
-        }
+        Check();
     }
 
     private void Num8Clikest()
@@ -91,11 +86,7 @@ public class Fifty : MonoBehaviour
         _summ += 8;
         _stepValue++;
         ResultLabelText($"{_summ}");
-        if (_summ >= 50)
-        {
-            SetInfoText("конец игры");
-            StepValueLableText($"количество шагов - {_stepValue}");
-        }
+        Check();
     }
 
     private void Num7Clikest()
@@ -103,11 +94,7 @@ public class Fifty : MonoBehaviour
         _summ += 7;
         _stepValue++;
         ResultLabelText($"{_summ}");
-        if (_summ >= 50)
-        {
-            SetInfoText("конец игры");
-            StepValueLableText($"количество шагов - {_stepValue}");
-        }
+        Check();
     }
 
     private void Num6Clikest()
@@ -115,11 +102,7 @@ public class Fifty : MonoBehaviour
         _summ += 6;
         _stepValue++;
         ResultLabelText($"{_summ}");
-        if (_summ >= 50)
-        {
-            SetInfoText("конец игры");
-            StepValueLableText($"количество шагов - {_stepValue}");
-        }
+        Check();
     }
 
     private void Num5Clikest()
@@ -127,11 +110,7 @@ public class Fifty : MonoBehaviour
         _summ += 5;
         _stepValue++;
         ResultLabelText($"{_summ}");
-        if (_summ >= 50)
-        {
-            SetInfoText("конец игры");
-            StepValueLableText($"количество шагов - {_stepValue}");
-        }
+        Check();
     }
 
     private void Num4Clikest()
@@ -139,11 +118,7 @@ public class Fifty : MonoBehaviour
         _summ += 4;
         _stepValue++;
         ResultLabelText($"{_summ}");
-        if (_summ >= 50)
-        {
-            SetInfoText("конец игры");
-            StepValueLableText($"количество шагов - {_stepValue}");
-        }
+        Check();
     }
 
     private void Num3Clikest()
@@ -151,11 +126,7 @@ public class Fifty : MonoBehaviour
         _summ += 3;
         _stepValue++;
         ResultLabelText($"{_summ}");
-        if (_summ >= 50)
-        {
-            SetInfoText("конец игры");
-            StepValueLableText($"количество шагов - {_stepValue}");
-        }
+        Check();
     }
 
     private void Num2Clikest()
@@ -163,11 +134,7 @@ public class Fifty : MonoBehaviour
         _summ += 2;
         _stepValue++;
         ResultLabelText($"{_summ}");
-        if (_summ >= 50)
-        {
-            SetInfoText("конец игры");
-            StepValueLableText($"количество шагов - {_stepValue}");
-        }
+        Check();
     }
 
     private void Num1Clikest()
@@ -175,10 +142,21 @@ public class Fifty : MonoBehaviour
         _summ += 1;
         _stepValue++;
         ResultLabelText($"{_summ}");
-        if (_summ >= 50)
+        Check();
+    }
+
+    private void Check()
+    {
+        if (_summ > 50)
         {
-            SetInfoText("конец игры");
+            SetInfoText("перебор");
             StepValueLableText($"количество шагов - {_stepValue}");
         }
+        if (_summ == 50)
+        {
+            SetInfoText("победа");
+            StepValueLableText($"количество шагов - {_stepValue}");
+        }
+        
     }
 }
