@@ -1,6 +1,8 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MagicNumbers : MonoBehaviour
 {
@@ -26,10 +28,6 @@ public class MagicNumbers : MonoBehaviour
         RightButton.onClick.AddListener(RightBottonClicked);
     }
 
-    private void Update()
-    {
-    }
-
     private void CalculateGuess()
     {
         _guess = (_min + _max) / 2;
@@ -50,24 +48,28 @@ public class MagicNumbers : MonoBehaviour
 
     private void MoreBottonClicked ()
     {
-        SetInfoText("число больше");
+        _stepValue++;
+        SetInfoText($"число больше. количество шагов {_stepValue}");
         _min = _guess;
         CalculateGuess();
-        _stepValue++;
     }
     private void RightBottonClicked ()
     {
-        SetInfoText($"ПОБЕДА !!!! твоё число {_guess}. количество шагов {_stepValue}");
-        _min = 0;
-        _max = 0;
-        _guess = 0; 
+        ScoreManager.Instance.Score = $"ПОБЕДА !!!! твоё число {_guess}. количество шагов {_stepValue}";
+        //SetInfoText($"ПОБЕДА !!!! твоё число {_guess}. количество шагов {_stepValue}");
+        //_min = 0;
+        //_max = 0;
+        //_guess = 0;
+        //SetInfoGuessText(string.Empty);
+        SceneManager.LoadScene(2);
+
     }
     private void SmallerBottonClicked ()
     {
-        SetInfoText("число меньше");
+        _stepValue++;
+        SetInfoText($"число меньше. количество шагов {_stepValue}");
         _max = _guess;
         CalculateGuess();
-        _stepValue++;
     }
     
 }
